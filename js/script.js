@@ -15,17 +15,65 @@ project 1 - A Random Quote Generator
   Use console.log() to log your array of quotes to the console.
 ***/
 
+const quotes = [
+  {
+    "quote": "“Remember, too, that all who succeed in life get off to a bad start, and pass through many heartbreaking struggles before they \"arrive\". The turning point in the lives of those who succeed usually comes at some moment of crisis,through which they are introduced to their \"other selves\".”",
+    "source": "Napoleon Hill",
+    "citation": "Book, Think and Grow Rich",
+    "year": "1937",
+    "tags": "Success/Failure"
+  },
+  {
+    "quote": "“One who has loved truly, can never lose entirely. Love is whimsical and temperamental. Its nature is ephemeral, and transitory. It comes when it pleases, and goes away without warning. Accept and enjoy it while it remains, but spend no time worrying about its departure. Worry will never bring it back.”",
+    "source": "Napoleon Hill",
+    "citation": "Book, Think and Grow Rich",
+    "year": "1937",
+    "tags": "Love"
+  },
+  {
+    "quote": "“Every adversity, every failure, every heartbreak, carries with it the seed of an equal or greater benefit.”",
+    "source": "Napoleon Hill",
+    "citation": "Book, Think and Grow Rich",
+    "year": "1937",
+    "tags": "Adversity, Success/Failure"
+  },
+  {
+    "quote": "“Failure is simply the opportunity to begin again, this time more intelligently.”",
+    "source": "Henry Ford",
+    "tags": "Success/Failure"
+  },
+  {
+    "quote": "“When everything seems to be going against you, remember that the airplane takes off against the wind, not with it.”",
+    "source": "Henry Ford",
+    "tags": "Adversity"
+  },
+  {
+    "quote": "“Success is stumbling from failure to failure with no loss of enthusiasm”",
+    "source": "Winston Churchill",
+    "tags": "Success/Failure"
+  },
+  {
+    "quote": "“Anyone who has never made a mistake has never tried anything new.”",
+    "source": "Albert Einstein",
+    "tags": "Adversity"
+  },
+];
+
 
 
 
 /***
   Create the `getRandomQuote` function to:
    - Create a variable to store a random number 
-   - Cse the random number to `return` a random quote object from the `quotes` array.
+   - Use the random number to `return` a random quote object from the `quotes` array.
 ***/
 
+function getRandomQuote(quotes){
+  let randomNumber = Math.floor(Math.random() * quotes.length);
+  return quotes[randomNumber];
+}
 
-
+console.log(getRandomQuote(quotes));
 
 /***
   Create the `printQuote` function to: 
@@ -40,6 +88,10 @@ project 1 - A Random Quote Generator
    - Set the `innerHTML` of the `quote-box` div to the HTML string. 
 ***/
 
+function printQuote(){
+  let randomQuote = getRandomQuote(quotes);
+  let html = "";
+}
 
 
 
