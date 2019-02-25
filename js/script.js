@@ -1,20 +1,4 @@
-/******************************************
-Treehouse FSJS Techdegree:
-project 1 - A Random Quote Generator
-******************************************/
-
-// Study guide for this project - https://drive.google.com/file/d/1s5grutGuQFwJcQP8bFwEI69Q8FCkGdDk/view?usp=sharing
-
-
-/*** 
-  Create the array of quote objects and name it `quotes`.
-  Add at least five quote objects to the `quotes` array.
-  Give each quote object a `quote` and `source` property.
-  Add the `citation` property to at least one object in the array.
-  Add the `year` property to at least one object in the array.
-  Use console.log() to log your array of quotes to the console.
-***/
-
+// This variable is an array of objects that contain data about the quotes.
 const quotes = [
   {
     "quote": "Remember, too, that all who succeed in life get off to a bad start, and pass through many heartbreaking struggles before they \"arrive\". The turning point in the lives of those who succeed usually comes at some moment of crisis,through which they are introduced to their \"other selves\".",
@@ -62,11 +46,12 @@ const quotes = [
 
 
 
-/***
-  Create the `getRandomQuote` function to:
-   - Create a variable to store a random number 
-   - Use the random number to `return` a random quote object from the `quotes` array.
-***/
+/* Both the randomNumber and prevNumber variables store a random number. The "prevNumber" variable stands for "previous number". Only the "prevNumber" 
+   variable stores the random number after the loop whereas the "randomNumber" variable generates a random number inside of the loop. The loop evaluates to true
+   if the "randomNumber" is the same as the "prevNumber". If they are the same then the loop generates another random number until they are not the same number.
+   This is done so the random number is different from the last random number. The reason for doing this is so when I click the "Show another quote" button, 
+   I get a new random quote instead of the exact same quote twice in a row.
+*/
 let randomNumber;
 let prevNumber;
 function getRandomQuote(quotes){
@@ -79,20 +64,11 @@ function getRandomQuote(quotes){
 
 
 
-/***
-  Create the `printQuote` function to: 
-   - Call the `getRandomQuote` function and assign it to a variable.
-   - Create a variable for the HTML string and set it equal to an empty string.
-   - Use the HTML template in the instructions or the markup in the index.html file, AND 
-     the random quote variable to build your HTML string.
-   - Add the quote and source section to the HTML string.
-   - Use an if statement to check for the citation property before adding it to the HTML string.
-   - Use an if statement to check for the year property before adding it to the HTML string.
-   - Don't forget to close that final `p` tag.
-   - Set the `innerHTML` of the `quote-box` div to the HTML string. 
-***/
 
-
+/*
+In the "printQuote" function, html text is stored in the variable called html.
+This html is printed to the screen after "printQuote" function is called.
+*/
   function printQuote(){
       let randomQuote = getRandomQuote(quotes);
       let html = `<p class="quote"> ${randomQuote['quote']} </p>
@@ -110,6 +86,8 @@ function getRandomQuote(quotes){
                   html += "</p>";
                   document.getElementById("quote-box").innerHTML = html;
 
+
+      // This code changes the background color depending on the quote.
       if (randomQuote === quotes[0]){
         document.body.style.backgroundColor = "#2980b9";
       }
@@ -136,15 +114,9 @@ function getRandomQuote(quotes){
   }
 
   
-/***
-  When the "Show another quote" button is clicked, the event listener 
-  below will be triggered, and it will call, or "invoke", the `printQuote` 
-  function. So do not make any changes to the line of code below this 
-  comment.
-***/
 
+// This code changes the quote after 10 seconds.
 setInterval(function(){ printQuote() }, 10000);
+
+// This code changes the quote after the button is clicked.
 document.getElementById('loadQuote').addEventListener("click", printQuote, false);
-
-
-// Remember to delete the comments that came with this file, and replace them with your own code comments.
