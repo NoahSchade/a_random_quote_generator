@@ -77,6 +77,8 @@ function getRandomQuote(quotes){
     return quotes[randomNumber];
 }
 
+
+
 /***
   Create the `printQuote` function to: 
    - Call the `getRandomQuote` function and assign it to a variable.
@@ -107,12 +109,33 @@ function getRandomQuote(quotes){
                     }
                   html += "</p>";
                   document.getElementById("quote-box").innerHTML = html;
+
+      if (randomQuote === quotes[0]){
+        document.body.style.backgroundColor = "#2980b9";
+      }
+      if (randomQuote === quotes[1]){
+        document.body.style.backgroundColor = "#e74c3c";
+      }
+      if (randomQuote === quotes[2]){
+        document.body.style.backgroundColor = "#2ecc71";
+      }
+      if (randomQuote === quotes[3]){
+        document.body.style.backgroundColor = "#8e44ad";
+      }
+      if (randomQuote === quotes[4]){
+        document.body.style.backgroundColor = "#f1c40f";
+      }
+      if (randomQuote === quotes[5]){
+        document.body.style.backgroundColor = "#1abc9c";
+      }
+      if (randomQuote === quotes[5]){
+        document.body.style.backgroundColor = "#2c3e50";
+      }
       return html
     
   }
 
-
-
+  
 /***
   When the "Show another quote" button is clicked, the event listener 
   below will be triggered, and it will call, or "invoke", the `printQuote` 
@@ -120,6 +143,7 @@ function getRandomQuote(quotes){
   comment.
 ***/
 
+setInterval(function(){ printQuote() }, 10000);
 document.getElementById('loadQuote').addEventListener("click", printQuote, false);
 
 
