@@ -21,41 +21,41 @@ const quotes = [
     "source": "Napoleon Hill",
     "citation": "Book, Think and Grow Rich",
     "year": "1937",
-    "tags": "Success/Failure"
+    "tags": "tags: Success/Failure"
   },
   {
     "quote": "One who has loved truly, can never lose entirely. Love is whimsical and temperamental. Its nature is ephemeral, and transitory. It comes when it pleases, and goes away without warning. Accept and enjoy it while it remains, but spend no time worrying about its departure. Worry will never bring it back.",
     "source": "Napoleon Hill",
     "citation": "Book, Think and Grow Rich",
     "year": "1937",
-    "tags": "Love"
+    "tags": "tags: Love"
   },
   {
-    "quote": "Every adversity, every failure, every heartbreak, carries with it the seed of an equal or greater benefit.",
+    "quote": "Every adversity, every failure, every heartbreak, carries with it the seed of an equal or greater benefit",
     "source": "Napoleon Hill",
     "citation": "Book, Think and Grow Rich",
     "year": "1937",
-    "tags": "Adversity, Success/Failure"
+    "tags": "tags: Adversity, Success/Failure"
   },
   {
     "quote": "Failure is simply the opportunity to begin again, this time more intelligently.",
     "source": "Henry Ford",
-    "tags": "Success/Failure"
+    "tags": "tags: Success/Failure"
   },
   {
     "quote": "When everything seems to be going against you, remember that the airplane takes off against the wind, not with it.",
     "source": "Henry Ford",
-    "tags": "Adversity"
+    "tags": "tags: Adversity"
   },
   {
     "quote": "Success is stumbling from failure to failure with no loss of enthusiasm",
     "source": "Winston Churchill",
-    "tags": "Success/Failure"
+    "tags": "tags: Success/Failure"
   },
   {
     "quote": "Anyone who has never made a mistake has never tried anything new.",
     "source": "Albert Einstein",
-    "tags": "Adversity"
+    "tags": "tags: Adversity"
   },
 ];
 
@@ -67,12 +67,15 @@ const quotes = [
    - Create a variable to store a random number 
    - Use the random number to `return` a random quote object from the `quotes` array.
 ***/
-
+let randomNumber;
+let prevNumber;
 function getRandomQuote(quotes){
-  let randomNumber = Math.floor(Math.random() * quotes.length);
-  return quotes[randomNumber];
+  do {
+    randomNumber = Math.floor(Math.random() * quotes.length);
+  } while (randomNumber === prevNumber);
+    prevNumber = randomNumber;
+    return quotes[randomNumber];
 }
-
 
 /***
   Create the `printQuote` function to: 
@@ -87,21 +90,27 @@ function getRandomQuote(quotes){
    - Set the `innerHTML` of the `quote-box` div to the HTML string. 
 ***/
 
-function printQuote(){
-  let randomQuote = getRandomQuote(quotes);
-  let html = `<p class="quote"> ${randomQuote['quote']} </p>
-              <p class="source"> ${randomQuote['source']}`;
 
-              if (randomQuote['citation']) {
-               html += `<span class="citation"> ${randomQuote['citation']} </span>`;
-              }
-              if (randomQuote['year']) {
-               html += `<span class="year"> ${randomQuote['year']} </span>`;
-              }
-              html += "</p>";
-              document.getElementById("quote-box").innerHTML = html;
-  return html
-}
+  function printQuote(){
+      let randomQuote = getRandomQuote(quotes);
+      let html = `<p class="quote"> ${randomQuote['quote']} </p>
+                  <p class="source"> ${randomQuote['source']}`;
+
+                  if (randomQuote['citation']) {
+                  html += `<span class="citation"> ${randomQuote['citation']} </span>`;
+                  }
+                  if (randomQuote['year']) {
+                  html += `<span class="year"> ${randomQuote['year']} </span>`;
+                  }
+                  if (randomQuote['tags']) {
+                    html += `<br><br><span class="tags"> ${randomQuote['tags']} </span>`;
+                    }
+                  html += "</p>";
+                  document.getElementById("quote-box").innerHTML = html;
+      return html
+    
+  }
+
 
 
 /***
